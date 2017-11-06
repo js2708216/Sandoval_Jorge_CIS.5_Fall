@@ -2,7 +2,10 @@
  * File:   main.cpp
  * Author: Jorge Sandoval
  * Created on October 21, 2017, 9:07 AM
- * Purpose: 
+ * Purpose: Aim of the 21 Card Game is to get 21 or as close to as possible.
+ *  Number cards have their face value, jacks, kings and queens are worth 10. 
+ * Ace can be either 1 or 11 and the player who holds the ace gets to choose
+ *  the value of the card.
  */
 
 //System Libraries Here
@@ -12,7 +15,7 @@ using namespace std;
 //Program Execution Begins Here
 
 //A Card Generated (1-13)
-int generate_card()
+int g_card()
 {
 return rand() % 13 + 1;
 }
@@ -20,7 +23,7 @@ return rand() % 13 + 1;
 
 //Generating The Computers Card.
 
-int generate_ai_card()
+int g_c_card()
 {
 return rand() % 7 + 15;
 }  
@@ -34,17 +37,22 @@ int main(int argc, char** argv){
    srand(time(NULL));
    bool play;
    int ai_card, my_card;
-   char x;
+   char x,
+        n;                      //Name     
 
     //Process/Calculations Here
    
+   //Get Users Name
+
+   
        //Information of Game//
 
-   cout << "        Welcome to the game of Twenty One!         " << endl;
+   cout << "        Welcome to the game of Twenty One         "<<"!"<< endl;
    cout <<"Rules Are Simple: "<<endl;
    cout<<"Each participant attempts to beat the dealer by getting a count as"
            " close to 21 as possible, without going over 21."<<endl;
-  
+   cout<<"I will be your Dealer so lets get this show on the road!"<<endl;
+    
    //
  
    cout<<"Press A to Start The Game"<<endl;
@@ -55,10 +63,10 @@ int main(int argc, char** argv){
         play = true;
 
 // Get the AI's card.
-    ai_card = generate_ai_card();
+    ai_card = g_c_card();
 
 // Get your first card.
-    my_card = generate_card();
+    my_card = g_card();
 
         cout << "You have " << my_card << " (h) Hit or (s) Stay?:(Choose Wisely) ";
 
@@ -71,7 +79,7 @@ int main(int argc, char** argv){
     if ( x == 'h' ){
     
 // Generate a card, and add it on.
-        my_card = my_card + generate_card();
+        my_card = my_card + g_card();
 
 // Have they bust?
     if ( my_card > 21 ){
